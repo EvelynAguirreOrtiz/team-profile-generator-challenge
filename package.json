@@ -1,0 +1,25 @@
+{
+  "name": "team-profile-generator-challenge",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/EvelynAguirreOrtiz/team-profile-generator-challenge.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/EvelynAguirreOrtiz/team-profile-generator-challenge/issues"
+  },
+  "homepage": "https://github.com/EvelynAguirreOrtiz/team-profile-generator-challenge#readme",
+  "devDependencies": {
+    "jest": "^27.5.1"
+  },
+  "dependencies": {
+    "inquirer": "^8.2.2"
+  }
+}
