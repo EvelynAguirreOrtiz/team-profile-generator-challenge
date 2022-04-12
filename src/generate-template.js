@@ -1,23 +1,3 @@
-// create Employee card
-// const generateEmployee = aboutEmployee => {
-//   if (!aboutEmployee) {
-
-function generateEmployee(employee) {
-  console.log(employee)
-  if (!employee) {
-    return '';
-  }
-
-  return `
-  <div>
-  <p>${employee.name}</p>
-  <p>${employee.role}</p>
-  <p>${employee.id}</p>
-  <p>${employee.email}</p>
-  <p>1</p>
- </div>
-  `;
-};
 
 // create Manager card
 // const generateManager = aboutManager => {
@@ -109,9 +89,6 @@ module.exports = templateData => {
     </header>
     <main>
       ${templateData}
-      ${generateManager(name, id, email)}
-      ${generateEngineer(name, id, email)}
-      ${generateIntern(name, id, email)}
     </main>
   </body>
   </html>
