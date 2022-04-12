@@ -1,6 +1,89 @@
-module.exports = templateData => {
-  const { name, id, email } = templateData;
+// create Employee card
+// const generateEmployee = aboutEmployee => {
+//   if (!aboutEmployee) {
 
+function generateEmployee(employee) {
+  if (!employee) {
+    return '';
+  }
+
+  return `
+  <div>
+  <p>${employee.name}</p>
+  <p>${employee.role}</p>
+  <p>${employee.id}</p>
+  <p>${employee.email}</p>
+  <p>1</p>
+ </div>
+  `;
+};
+
+// create Manager card
+// const generateManager = aboutManager => {
+//   if (!aboutManager) {
+
+function generateManager(manager) {
+  if (!manager) {
+    return '';
+  }
+
+  return `
+  <div>
+  <p>${manager.name}</p>
+  <p>${manager.role}</p>
+  <p>${manager.id}</p>
+  <p>${manager.email}</p>
+  <p>${manager.officeNumber}</p>
+  <p>2</p>
+ </div>
+  `;
+};
+
+// create Engineer card
+// const generateEngineer = aboutEngineer => {
+//   if (!aboutEngineer) {
+
+function generateEngineer(engineer) {
+  if (!engineer) {
+    return '';
+  }
+
+  return `
+  <div>
+  <p>${engineer.name}</p>
+  <p>${engineer.role}</p>
+  <p>${engineer.id}</p>
+  <p>${engineer.email}</p>
+  <p>${engineer.github}</p>
+  <p>3</p>
+ </div>
+  `;
+};
+
+// create Intern card
+// const generateIntern = aboutIntern => {
+//   if (!aboutIntern) {
+
+function generateIntern(intern) {
+  if (!intern) {
+    return '';
+  }
+
+  return `
+  <div>
+  <p>${intern.name}</p>
+  <p>${intern.role}</p>
+  <p>${intern.id}</p>
+  <p>${intern.email}</p>
+  <p>${intern.school}</p>
+  <p>4</p>
+ </div>
+  `;
+};
+
+// generate html
+module.exports = templateData => {
+  const { name, id, email, ...school } = templateData;
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -24,15 +107,10 @@ module.exports = templateData => {
       </div>
     </header>
     <main>
-     <div>
-      <p>Name</p>
-      <p>Role</p>
-      <p>ID</p>
-      <p>Email</p>
-      <p>Office Number</p>
-      <p>GitHub</p>
-      <p>School</p>
-     </div>
+      ${generateEmployee(name, id, email)}
+      // ${generateManager(name, id, email)}
+      // ${generateEngineer(name, id, email)}
+      // ${generateIntern(name, id, email)}
     </main>
   </body>
   </html>
