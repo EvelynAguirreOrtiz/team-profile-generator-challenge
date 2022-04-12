@@ -3,6 +3,7 @@
 //   if (!aboutEmployee) {
 
 function generateEmployee(employee) {
+  console.log(employee)
   if (!employee) {
     return '';
   }
@@ -107,10 +108,10 @@ module.exports = templateData => {
       </div>
     </header>
     <main>
-      ${generateEmployee(name, id, email)}
-      // ${generateManager(name, id, email)}
-      // ${generateEngineer(name, id, email)}
-      // ${generateIntern(name, id, email)}
+      ${templateData}
+      ${generateManager(name, id, email)}
+      ${generateEngineer(name, id, email)}
+      ${generateIntern(name, id, email)}
     </main>
   </body>
   </html>
