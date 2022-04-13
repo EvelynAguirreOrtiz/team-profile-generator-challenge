@@ -1,66 +1,65 @@
+const Manager = require("../lib/Manager");
 
 // create Manager card
-// const generateManager = aboutManager => {
-//   if (!aboutManager) {
+const generateManager = teamArr => {
 
-function generateManager(manager) {
-  if (!manager) {
-    return '';
-  }
-
-  return `
-  <div>
-  <p>${manager.name}</p>
-  <p>${manager.role}</p>
-  <p>${manager.id}</p>
-  <p>${manager.email}</p>
-  <p>${manager.officeNumber}</p>
-  <p>2</p>
- </div>
-  `;
+teamArr.filter(Manager)
 };
+
 
 // create Engineer card
 // const generateEngineer = aboutEngineer => {
 //   if (!aboutEngineer) {
 
-function generateEngineer(engineer) {
-  if (!engineer) {
-    return '';
-  }
+// function generateEngineer(engineer) {
+//   if (!engineer) {
+//     return '';
+//   }
 
-  return `
-  <div>
-  <p>${engineer.name}</p>
-  <p>${engineer.role}</p>
-  <p>${engineer.id}</p>
-  <p>${engineer.email}</p>
-  <p>${engineer.github}</p>
-  <p>3</p>
- </div>
-  `;
-};
+//   return `
+//   <div>
+//   <p>${engineer.name}</p>
+//   <p>${engineer.role}</p>
+//   <p>${engineer.id}</p>
+//   <p>${engineer.email}</p>
+//   <p>${engineer.github}</p>
+//   <p>3</p>
+//  </div>
+//   `;
+// };
 
 // create Intern card
 // const generateIntern = aboutIntern => {
 //   if (!aboutIntern) {
 
-function generateIntern(intern) {
-  if (!intern) {
+// function generateIntern(intern) {
+//   if (!intern) {
+//     return '';
+//   }
+
+//   return `
+//   <div>
+//   <p>${intern.name}</p>
+//   <p>${intern.role}</p>
+//   <p>${intern.id}</p>
+//   <p>${intern.email}</p>
+//   <p>${intern.school}</p>
+//   <p>4</p>
+//  </div>
+//   `;
+// };
+
+const generateTeam = teamArr => {
+  if (!teamArr) {
     return '';
   }
 
   return `
   <div>
-  <p>${intern.name}</p>
-  <p>${intern.role}</p>
-  <p>${intern.id}</p>
-  <p>${intern.email}</p>
-  <p>${intern.school}</p>
-  <p>4</p>
- </div>
-  `;
-};
+
+  </d>`;
+ 
+}
 
 // generate html
 module.exports = templateData => {
@@ -88,7 +87,7 @@ module.exports = templateData => {
       </div>
     </header>
     <main>
-      ${templateData}
+    ${templateData}
     </main>
   </body>
   </html>

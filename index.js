@@ -1,12 +1,13 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const generateTemplate = require(`./src/generate-template`)
-const Engineer = require('./lib/Engineer')
-const Intern = require('./lib/Intern')
+const generateTemplate = require(`./src/generate-template`);
+const Employee = require('./lib/Employee')
+const Engineer = require('./lib/Engineer');
+const Intern = require('./lib/Intern');
 const Manager = require('./lib/Manager');
 const { listenerCount } = require('process');
 
-const employees = [];
+const teamArr = [];
 
 // Manager Questions
 const managerQuestions = [
@@ -63,7 +64,6 @@ const managerQuestions = [
     }
   }
 ];
-
 // Engineer Questions
 const engineerQuestions = [
   {
@@ -119,7 +119,6 @@ const engineerQuestions = [
     }
   }
 ];
-
 // Intern Questions
 const internQuestions = [
   {
@@ -138,7 +137,7 @@ const internQuestions = [
   {
     type: 'input',
     name: 'id',
-    message: 'Please enter intern ID number (Required)',
+    message: 'Enter intern ID number (Required)',
     validate: idInput => {
       if (idInput) {
         return true;
@@ -151,7 +150,7 @@ const internQuestions = [
   {
     type: 'input',
     name: 'email',
-    message: 'Please enter intern email (Required)',
+    message: 'Enter intern email (Required)',
     validate: emailInput => {
       if (emailInput) {
         return true;
@@ -197,42 +196,42 @@ function promptMenu() {
       ]
     }
   ]).then((choice) => {
-      console.log(choice);
+    console.log(choice);
 
-      if(choice.options === 'Create Engineer') {
-        console.log("creating Engineer")
-        enterEngineerData();
-      }
+    if (choice.options === 'Create Engineer') {
+      console.log("creating Engineer")
+      enterEngineerData();
+    }
 
-      if(choice.options === 'Create Intern') {
-        console.log("creating Intern")
-        enterInternData();
-      }
+    if (choice.options === 'Create Intern') {
+      console.log("creating Intern")
+      enterInternData();
+    }
 
-      if(choice.options === 'Build Team') {
-        console.log("building Team")
-        writeToFile(employees)
-      }
+    if (choice.options === 'Build Team') {
+      console.log("building Team")
+      writeToFile(teamArr)
+    }
 
   })
 }
 
 function enterEngineerData() {
   inquirer.prompt(engineerQuestions).then((data) => {
-    const engineer = new Engineer (data.name, data.id, data.email, data.github)
+    const engineer = new Engineer(data.name, data.id, data.email, data.github)
     // writeToFile(data);
-    employees.push(engineer);
-    console.log(employees);
+    teamArr.push(engineer);
+    console.log(teamArr);
     promptMenu();
   });
 }
 
 function enterInternData() {
   inquirer.prompt(internQuestions).then((data) => {
-    const intern = new Intern (data.name, data.id, data.email, data.school)
+    const intern = new Intern(data.name, data.id, data.email, data.school)
     // writeToFile(data);
-    employees.push(intern);
-    console.log(employees);
+    teamArr.push(intern);
+    console.log(teamArr);
     promptMenu();
   });
 }
@@ -240,10 +239,11 @@ function enterInternData() {
 // Function to initialize app                                                         
 function enterManagerData() {
   inquirer.prompt(managerQuestions).then((data) => {
-    const manager = new Manager (data.name, data.id, data.email, data.officeNumber)
+    const manager = new Manager(data.name, data.id, data.email, data.officeNumber)
     // writeToFile(data);
-    employees.push(manager);
-    console.log(employees);
+    teamArr.push(manager);
+    console.log(teamArr);
+    console.log(manager);
     promptMenu();
   });
 }
