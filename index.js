@@ -1,16 +1,20 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const generateTemplate = require(`./src/generate-template`);
-const Employee = require('./lib/Employee')
+const Employee = require('./lib/Employee');
+const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
-const Manager = require('./lib/Manager');
 const { listenerCount } = require('process');
+
+const managerArr = [];
+const engineerArr = [];
+const internArr = [];
 
 const teamArr = [];
 
-// Manager Questions
-const managerQuestions = [
+// Team Questions
+const promptManager = [
   {
     type: 'input',
     name: 'name',
@@ -65,7 +69,7 @@ const managerQuestions = [
   }
 ];
 // Engineer Questions
-const engineerQuestions = [
+const promptEngineer = [
   {
     type: 'input',
     name: 'name',
@@ -120,7 +124,7 @@ const engineerQuestions = [
   }
 ];
 // Intern Questions
-const internQuestions = [
+const promptIntern = [
   {
     type: 'input',
     name: 'name',
@@ -175,76 +179,77 @@ const internQuestions = [
   }
 ];
 
-// Function to write HTML file
-function writeToFile(data) {
 
-  fs.writeFile('./dist/index.html', generateTemplate(data), err =>
-    err ? console.error(err) : console.log('HTML created!')
-  );
-}
-
-function promptMenu() {
+function promptTeam() {
   inquirer.prompt([
     {
       type: 'list',
       name: 'options',
       message: 'What would you like to do?',
       choices: [
-        'Create Engineer',
-        'Create Intern',
+        'Add Engineer',
+        'Add Intern',
         'Build Team'
       ]
     }
   ]).then((choice) => {
     console.log(choice);
 
-    if (choice.options === 'Create Engineer') {
+    if (choice.options === 'Add Engineer') {
       console.log("creating Engineer")
       enterEngineerData();
     }
 
-    if (choice.options === 'Create Intern') {
+    if (choice.options === 'Add Intern') {
       console.log("creating Intern")
       enterInternData();
     }
 
     if (choice.options === 'Build Team') {
       console.log("building Team")
-      writeToFile(teamArr)
+      // writeToFile(teamArr)
+      writeToFile(managerArr, engineerArr, internArr)
     }
-
   })
 }
 
 function enterEngineerData() {
-  inquirer.prompt(engineerQuestions).then((data) => {
+  inquirer.prompt(promptEngineer).then((data) => {
     const engineer = new Engineer(data.name, data.id, data.email, data.github)
     // writeToFile(data);
-    teamArr.push(engineer);
-    console.log(teamArr);
-    promptMenu();
+    engineerArr.push(engineer);
+    console.log(engineerArr);
+   
+    promptTeam();
   });
 }
 
 function enterInternData() {
-  inquirer.prompt(internQuestions).then((data) => {
+  inquirer.prompt(promptIntern).then((data) => {
     const intern = new Intern(data.name, data.id, data.email, data.school)
     // writeToFile(data);
-    teamArr.push(intern);
-    console.log(teamArr);
-    promptMenu();
+    internArr.push(intern);
+    console.log(internArr);
+    promptTeam();
   });
+}
+
+// Function to write HTML file
+function writeToFile(data) {
+  fs.writeFile('./dist/index.html', generateTemplate(data), err =>
+    err ? console.error(err) : console.log('HTML created!')
+  );
 }
 
 // Function to initialize app                                                         
 function enterManagerData() {
-  inquirer.prompt(managerQuestions).then((data) => {
+  inquirer.prompt(promptManager).then((data) => {
     const manager = new Manager(data.name, data.id, data.email, data.officeNumber)
     // writeToFile(data);
-    teamArr.push(manager);
-    console.log(teamArr);
-    console.log(manager);
-    promptMenu();
+    managerArr.push(manager);
+    console.log(managerArr);
+    console.log(manager.id);
+    promptTeam();
   });
 }
 enterManagerData();

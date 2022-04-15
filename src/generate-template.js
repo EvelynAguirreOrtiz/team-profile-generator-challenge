@@ -1,69 +1,87 @@
-const Manager = require("../lib/Manager");
+const Employee = require('../lib/Employee');
+const Manager = require('../lib/Manager');
+const Engineer = require('../lib/Engineer');
+const Intern = require('../lib/Intern');
 
 // create Manager card
-const generateManager = teamArr => {
+// const generateManager = managerArr => {
 
-teamArr.filter(Manager)
+function generateManager(data) {
+
+  return `
+  <div class="column is-narrow">
+      <h1 class="title is-3">${Manager.name}</h1>
+      <h2 class="subtitle is-4">${Manager.role}</h2>
+      <h3 class="subtitle is-6">ID: ${Manager.id}</h3>
+      <h3 class="subtitle is-6">Email: ${Manager.email}</h3>
+      <h2 class="subtitle is-6">Office Number: ${Manager.officeNumber}</h2>
+      <p>1</p>
+  </div>
+    `;
 };
-
+generateManager();
 
 // create Engineer card
 // const generateEngineer = aboutEngineer => {
 //   if (!aboutEngineer) {
 
-// function generateEngineer(engineer) {
-//   if (!engineer) {
-//     return '';
-//   }
+function generateEngineer(data) {
+  if (!data) {
+    return '';
+  }
 
-//   return `
-//   <div>
-//   <p>${engineer.name}</p>
-//   <p>${engineer.role}</p>
-//   <p>${engineer.id}</p>
-//   <p>${engineer.email}</p>
-//   <p>${engineer.github}</p>
-//   <p>3</p>
-//  </div>
-//   `;
-// };
+  return `
+  <div class="column is-narrow">
+  <h1 class="subtitle is-3">${Engineer.name}</h1>
+  <h2 class="subtitle is-4">${Engineer.role}</h2>
+  <h3 class="subtitle is-6">ID: ${Engineer.id}</h3>
+  <h3 class="subtitle is-6">Email: ${Engineer.email}</h3>
+  <h3 class="subtitle is-6">GitHub: ${Engineer.github}</h3>
+  <p>3</p>
+ </div>
+  `;
+};
+generateEngineer();
 
 // create Intern card
 // const generateIntern = aboutIntern => {
 //   if (!aboutIntern) {
 
-// function generateIntern(intern) {
-//   if (!intern) {
+function generateIntern(intern) {
+  if (!intern) {
+    return '';
+  }
+  return `
+  <div class="column is-narrow">
+  <h1 class="subtitle is-3">${Intern.name}</h1>
+  <h2 class="subtitle is-4">${Intern.role}</h2>
+  <h3 class="subtitle is-6">ID: ${Intern.id}</h3>
+  <h3 class="subtitle is-6">Email: ${Intern.email}</h3>
+  <h3 class="subtitle is-6">School: ${Intern.school}</h3>
+  <p>4</p>
+ </div>
+  `;
+};
+generateIntern();
+
+// const generateTeam = teamArr => {
+//   if (!teamArr) {
 //     return '';
 //   }
 
 //   return `
 //   <div>
-//   <p>${intern.name}</p>
-//   <p>${intern.role}</p>
-//   <p>${intern.id}</p>
-//   <p>${intern.email}</p>
-//   <p>${intern.school}</p>
-//   <p>4</p>
-//  </div>
-//   `;
-// };
 
-const generateTeam = teamArr => {
-  if (!teamArr) {
-    return '';
-  }
+//   </div>`;
 
-  return `
-  <div>
-
-  </d>`;
- 
-}
+// }
 
 // generate html
-module.exports = templateData => {
-  const { name, id, email, ...school } = templateData;
+function generateHTML(data) {
+
+
+  const { name, role, id, email, officeNumber, github, school } = data;
+
   return `
   <!DOCTYPE html>
   <html lang="en">
@@ -74,22 +92,26 @@ module.exports = templateData => {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Team Profiles</title>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+
     <link href="https://fonts.googleapis.com/css?family=Public+Sans:300i,300,500&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
 
   </head>
   
   <body>
     <header>
-      <div >
-        <h1>My Team</h1>
+      <div class="box">
+        <h1 class="title is-1">My Team</h1>
       </div>
     </header>
-    <main>
-    ${templateData}
+    <main class="columns is-mobile is-multiline is-centered">
+    ${data}
+    ${generateManager(name, email)}
+    ${generateEngineer(data)}
+    ${generateIntern(data)}
     </main>
   </body>
   </html>
   `;
 }
+module.exports = generateHTML;
