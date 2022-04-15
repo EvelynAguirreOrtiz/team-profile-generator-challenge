@@ -9,12 +9,13 @@ const Intern = require('../lib/Intern');
 function generateManager(data) {
 
   return `
+
   <div class="column is-narrow">
-      <h1 class="title is-3">${Manager.name}</h1>
-      <h2 class="subtitle is-4">${Manager.role}</h2>
-      <h3 class="subtitle is-6">ID: ${Manager.id}</h3>
-      <h3 class="subtitle is-6">Email: ${Manager.email}</h3>
-      <h2 class="subtitle is-6">Office Number: ${Manager.officeNumber}</h2>
+      <h1 class="title is-3">${manager.name}</h1>
+      <h2 class="subtitle is-4">${manager.role}</h2>
+      <h3 class="subtitle is-6">ID: ${manager.id}</h3>
+      <h3 class="subtitle is-6">Email: ${manager.email}</h3>
+      <h2 class="subtitle is-6">Office Number: ${manager.officeNumber}</h2>
       <p>1</p>
   </div>
     `;
