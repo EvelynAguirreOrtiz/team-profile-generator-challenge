@@ -3,23 +3,33 @@ const Manager = require('../lib/Manager');
 const Engineer = require('../lib/Engineer');
 const Intern = require('../lib/Intern');
 
-// create Manager card
-// const generateManager = managerArr => {
+// const {Manager} = require('../lib/Manager');
+// const {Engineer} = require('../lib/Engineer');
+// const {Intern} = require('../lib/Intern');
+// const teamArr = require('../index');
+// const manager = require('../index');
+// const engineer = require('../index');
+// const intern = require('../index');
 
+
+
+// create Manager card
 function generateManager(data) {
+  // const managerArr = teamArr.filter((Manager) ) 
 
   return `
   <div class="column is-narrow">
-      <h1 class="title is-3">${Manager.name}</h1>
-      <h2 class="subtitle is-4">${Manager.role}</h2>
-      <h3 class="subtitle is-6">ID: ${Manager.id}</h3>
-      <h3 class="subtitle is-6">Email: ${Manager.email}</h3>
-      <h2 class="subtitle is-6">Office Number: ${Manager.officeNumber}</h2>
-      <p>1</p>
+    <h1 class="title is-3">${Manager.name}</h1>
+    <h2 class="subtitle is-4">${Manager.role}</h2>
+    <h3 class="subtitle is-6">ID: ${Manager.id}</h3>
+    <h3 class="subtitle is-6">Email: ${Manager.email}</h3>
+    <h2 class="subtitle is-6">Office Number: ${Manager.officeNumber}</h2>
+    <p>1</p>
   </div>
-    `;
+  `;
 };
 generateManager();
+
 
 // create Engineer card
 // const generateEngineer = aboutEngineer => {
@@ -32,7 +42,7 @@ function generateEngineer(data) {
 
   return `
   <div class="column is-narrow">
-  <h1 class="subtitle is-3">${Engineer.name}</h1>
+  <h1 class="title is-3">${Engineer.name}</h1>
   <h2 class="subtitle is-4">${Engineer.role}</h2>
   <h3 class="subtitle is-6">ID: ${Engineer.id}</h3>
   <h3 class="subtitle is-6">Email: ${Engineer.email}</h3>
@@ -53,7 +63,7 @@ function generateIntern(intern) {
   }
   return `
   <div class="column is-narrow">
-  <h1 class="subtitle is-3">${Intern.name}</h1>
+  <h1 class="title is-3">${Intern.name}</h1>
   <h2 class="subtitle is-4">${Intern.role}</h2>
   <h3 class="subtitle is-6">ID: ${Intern.id}</h3>
   <h3 class="subtitle is-6">Email: ${Intern.email}</h3>
@@ -64,21 +74,9 @@ function generateIntern(intern) {
 };
 generateIntern();
 
-// const generateTeam = teamArr => {
-//   if (!teamArr) {
-//     return '';
-//   }
-
-//   return `
-//   <div>
-
-//   </div>`;
-
-// }
 
 // generate html
 function generateHTML(data) {
-
 
   const { name, role, id, email, officeNumber, github, school } = data;
 
@@ -106,7 +104,7 @@ function generateHTML(data) {
     </header>
     <main class="columns is-mobile is-multiline is-centered">
     ${data}
-    ${generateManager(name, email)}
+    ${generateManager(data)}
     ${generateEngineer(data)}
     ${generateIntern(data)}
     </main>
