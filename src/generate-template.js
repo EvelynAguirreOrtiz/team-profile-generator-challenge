@@ -1,84 +1,47 @@
-const Employee = require('../lib/Employee');
-const Manager = require('../lib/Manager');
-const Engineer = require('../lib/Engineer');
-const Intern = require('../lib/Intern');
-
-// const {Manager} = require('../lib/Manager');
-// const {Engineer} = require('../lib/Engineer');
-// const {Intern} = require('../lib/Intern');
-// const teamArr = require('../index');
-// const manager = require('../index');
-// const engineer = require('../index');
-// const intern = require('../index');
-
-
-
 // create Manager card
-function generateManager(data) {
-  // const managerArr = teamArr.filter((Manager) ) 
+const generateManager = manager => {
+  teamArr.filter(employee => employee.getRole() === "Manager").map(Manager)
+  return `
+    <div class="column is-narrow">
+      <h1 class="title is-3">${manager.name}</h1>
+      <h2 class="subtitle is-4">Manager</h2>
+      <h3 class="subtitle is-6">ID: ${manager.id}</h3>
+      <h3 class="subtitle is-6">Email: ${manager.email}</h3>
+      <h2 class="subtitle is-6">Office Number: ${manager.officeNumber}</h2>
+    </div>
+    `;
+};
 
+const generateEngineer = engineer => {
+  // teamArr.filter(employee => employee.getRole() === "Engineer").map(engineer)
   return `
   <div class="column is-narrow">
-    <h1 class="title is-3">${Manager.name}</h1>
-    <h2 class="subtitle is-4">${Manager.role}</h2>
-    <h3 class="subtitle is-6">ID: ${Manager.id}</h3>
-    <h3 class="subtitle is-6">Email: ${Manager.email}</h3>
-    <h2 class="subtitle is-6">Office Number: ${Manager.officeNumber}</h2>
-    <p>1</p>
+    <h1 class="title is-3">${engineer.getName()}</h1>
+    <h2 class="subtitle is-4">Engineer</h2>
+    <h3 class="subtitle is-6">ID: ${engineer.getId()}</h3>
+    <h3 class="subtitle is-6">Email: ${engineer.getEmail()}</h3>
+    <h3 class="subtitle is-6">GitHub: ${engineer.getGithub()}</h3>
   </div>
   `;
 };
-generateManager();
 
-
-// create Engineer card
-// const generateEngineer = aboutEngineer => {
-//   if (!aboutEngineer) {
-
-function generateEngineer(data) {
-  if (!data) {
-    return '';
-  }
-
+const generateIntern = intern => {
+  
   return `
   <div class="column is-narrow">
-  <h1 class="title is-3">${Engineer.name}</h1>
-  <h2 class="subtitle is-4">${Engineer.role}</h2>
-  <h3 class="subtitle is-6">ID: ${Engineer.id}</h3>
-  <h3 class="subtitle is-6">Email: ${Engineer.email}</h3>
-  <h3 class="subtitle is-6">GitHub: ${Engineer.github}</h3>
-  <p>3</p>
+  <h1 class="title is-3">${intern.getName}</h1>
+  <h2 class="subtitle is-4">Intern</h2>
+  <h3 class="subtitle is-6">ID: ${intern.getId}</h3>
+  <h3 class="subtitle is-6">Email: ${intern.getEmail}</h3>
+  <h3 class="subtitle is-6">School: ${intern.getSchool}</h3>
  </div>
   `;
 };
-generateEngineer();
-
-// create Intern card
-// const generateIntern = aboutIntern => {
-//   if (!aboutIntern) {
-
-function generateIntern(intern) {
-  if (!intern) {
-    return '';
-  }
-  return `
-  <div class="column is-narrow">
-  <h1 class="title is-3">${Intern.name}</h1>
-  <h2 class="subtitle is-4">${Intern.role}</h2>
-  <h3 class="subtitle is-6">ID: ${Intern.id}</h3>
-  <h3 class="subtitle is-6">Email: ${Intern.email}</h3>
-  <h3 class="subtitle is-6">School: ${Intern.school}</h3>
-  <p>4</p>
- </div>
-  `;
-};
-generateIntern();
-
 
 // generate html
-function generateHTML(data) {
+function generateHTML(teamArr) {
 
-  const { name, role, id, email, officeNumber, github, school } = data;
+// const generateHtml = teamArr => {
 
   return `
   <!DOCTYPE html>
@@ -103,13 +66,16 @@ function generateHTML(data) {
       </div>
     </header>
     <main class="columns is-mobile is-multiline is-centered">
-    ${data}
-    ${generateManager(data)}
-    ${generateEngineer(data)}
-    ${generateIntern(data)}
+
+  ${generateManager(manager)}
+
+
+    
+
     </main>
   </body>
   </html>
   `;
 }
+
 module.exports = generateHTML;
