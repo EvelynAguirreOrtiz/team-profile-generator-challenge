@@ -205,8 +205,8 @@ function promptTeam() {
 
     if (choice.options === 'Build Team') {
       console.log("building Team")
-      // writeToFile(teamArr)
-      writeToFile(teamArr)
+      console.log(teamArr)
+      writeToFile(teamArr);
     }
   })
 }
@@ -214,11 +214,8 @@ function promptTeam() {
 function enterEngineerData() {
   inquirer.prompt(promptEngineer).then((data) => {
     const engineer = new Engineer(data.name, data.id, data.email, data.github)
-
-    // engineerArr.push(engineer)
     teamArr.push(engineer);
     console.log(teamArr);
-   
     promptTeam();
   });
 }
@@ -226,8 +223,6 @@ function enterEngineerData() {
 function enterInternData() {
   inquirer.prompt(promptIntern).then((data) => {
     const intern = new Intern(data.name, data.id, data.email, data.school)
-
-    // internArr.push(intern);
     teamArr.push(intern);
     console.log(teamArr);
     promptTeam();
@@ -245,8 +240,6 @@ function writeToFile(data) {
 function enterManagerData() {
   inquirer.prompt(promptManager).then((data) => {
     const manager = new Manager(data.name, data.id, data.email, data.officeNumber)
-
-    // managerArr.push(manager);
     teamArr.push(manager);
     console.log(teamArr);
     promptTeam();

@@ -1,43 +1,3 @@
-// create Manager card
-// const generateManager = manager => {
-//   teamArr.filter(employee => employee.getRole() === "Manager").map(Manager)
-//   return `
-//     <div class="column is-narrow">
-//       <h1 class="title is-3">${manager.name}</h1>
-//       <h2 class="subtitle is-4">Manager</h2>
-//       <h3 class="subtitle is-6">ID: ${manager.id}</h3>
-//       <h3 class="subtitle is-6">Email: ${manager.email}</h3>
-//       <h2 class="subtitle is-6">Office Number: ${manager.officeNumber}</h2>
-//     </div>
-//     `;
-// };
-
-// const generateEngineer = engineer => {
-//   // teamArr.filter(employee => employee.getRole() === "Engineer").map(engineer)
-//   return `
-//   <div class="column is-narrow">
-//     <h1 class="title is-3">${engineer.getName()}</h1>
-//     <h2 class="subtitle is-4">Engineer</h2>
-//     <h3 class="subtitle is-6">ID: ${engineer.getId()}</h3>
-//     <h3 class="subtitle is-6">Email: ${engineer.getEmail()}</h3>
-//     <h3 class="subtitle is-6">GitHub: ${engineer.getGithub()}</h3>
-//   </div>
-//   `;
-// };
-
-// const generateIntern = intern => {
-
-//   return `
-//   <div class="column is-narrow">
-//   <h1 class="title is-3">${intern.getName}</h1>
-//   <h2 class="subtitle is-4">Intern</h2>
-//   <h3 class="subtitle is-6">ID: ${intern.getId}</h3>
-//   <h3 class="subtitle is-6">Email: ${intern.getEmail}</h3>
-//   <h3 class="subtitle is-6">School: ${intern.getSchool}</h3>
-//  </div>
-//   `;
-// };
-
 // generate html
 function generateHTML(teamArr) {
   // const generatHtml = teamArr => {
@@ -54,42 +14,43 @@ function generateHTML(teamArr) {
       `;
   };
 
-const arr = [];
-
-arr.push(teamArr.filter(employee => employee.getRole() === "Manager").map(manager => generateManager(manager)) 
-);
-
-
-  // const generateEngineer = engineer => {
-  //   // teamArr.filter(employee => employee.getRole() === "Engineer").map(engineer)
-  //   return `
-  //   <div class="column is-narrow">
-  //     <h1 class="title is-3">${engineer.getName()}</h1>
-  //     <h2 class="subtitle is-4">Engineer</h2>
-  //     <h3 class="subtitle is-6">ID: ${engineer.getId()}</h3>
-  //     <h3 class="subtitle is-6">Email: ${engineer.getEmail()}</h3>
-  //     <h3 class="subtitle is-6">GitHub: ${engineer.getGithub()}</h3>
-  //   </div>
-  //   `;
-  // };
-
-  // const generateIntern = intern => {
-
-  //   return `
-  //   <div class="column is-narrow">
-  //   <h1 class="title is-3">${intern.getName}</h1>
-  //   <h2 class="subtitle is-4">Intern</h2>
-  //   <h3 class="subtitle is-6">ID: ${intern.getId}</h3>
-  //   <h3 class="subtitle is-6">Email: ${intern.getEmail}</h3>
-  //   <h3 class="subtitle is-6">School: ${intern.getSchool}</h3>
-  //  </div>
-  //   `;
-  // };
-
-
-
-  module.exports = teamArr => {
+  const generateEngineer = engineer => {
     return `
+    <div class="column is-narrow">
+      <h1 class="title is-3">${engineer.getName()}</h1>
+      <h2 class="subtitle is-4">Engineer</h2>
+      <h3 class="subtitle is-6">ID: ${engineer.getId()}</h3>
+      <h3 class="subtitle is-6">Email: ${engineer.getEmail()}</h3>
+      <h3 class="subtitle is-6">GitHub: ${engineer.getGithub()}</h3>
+    </div>
+    `;
+  };
+
+  const generateIntern = intern => {
+    return `
+    <div class="column is-narrow">
+      <h1 class="title is-3">${intern.getName()}</h1>
+      <h2 class="subtitle is-4">Intern</h2>
+      <h3 class="subtitle is-6">ID: ${intern.getId()}</h3>
+      <h3 class="subtitle is-6">Email: ${intern.getEmail()}</h3>
+      <h3 class="subtitle is-6">School: ${intern.getSchool()}</h3>
+    </div>
+    `;
+  };
+
+  const arr = [];
+  arr.push(teamArr.filter(employee => employee.getRole() === "Manager").map(manager => generateManager(manager))
+  );
+  arr.push(teamArr.filter(employee => employee.getRole() === "Engineer").map(engineer => generateEngineer(engineer))
+  );
+  arr.push(teamArr.filter(employee => employee.getRole() === "Intern").map(intern => generateIntern(intern))
+  );
+  
+  return arr;
+}
+
+module.exports = teamArr => {
+  return `
 
   <!DOCTYPE html>
   <html lang="en">
@@ -113,13 +74,9 @@ arr.push(teamArr.filter(employee => employee.getRole() === "Manager").map(manage
       </div>
     </header>
     <main class="columns is-mobile is-multiline is-centered">
-<div>
-  ${generateHTML(teamArr)}
-</div>
+    ${generateHTML(teamArr)}
     </main>
   </body>
   </html>
   `;
-  }
-
 }
