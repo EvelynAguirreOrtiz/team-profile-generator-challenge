@@ -3,9 +3,9 @@
   ![MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
 
   ## Description
-  This is a command-line application designed for team managers can use to record their team member's contact information and  generate an HTML file to provide convenient access to their emails and GitHub profiles. Each team consists of a Manager, Engineers, and Interns. 
+  This is a command-line application that team managers can use to record their team member's email addresses and Engineers' Github repositories. The application will generate an HTML file to provide convenient access to their information. 
   
-  Each team member's email can be accessed by clicking on their email address. Similarly, each Engineer's Github profile can be accessed by clicking on their username.
+  Each team member's email can be accessed by clicking on their email address. Similarly, each Engineer's Github profile can be accessed by clicking on their username. The team roles include a Manager, Engineers, and Interns. 
 
   ## Table of Contents
   - [Project Title](# (#Team portfolio generator))
