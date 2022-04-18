@@ -23,6 +23,11 @@
   ```bash
   node index.js
   ```
+  A demo of the app and tests can be viewed [here](https://watch.screencastify.com/v/75cbjzxsaJUzKsA80IPN).
+
+  ![](./assets/images/team-profile-generator-gif.gif)
+  
+  ![](./assets/images/html-screenshot.jpg)
 
   ## License
   This application is covered under [The MIT License](https://opensource.org/licenses/MIT). 
